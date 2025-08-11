@@ -1,0 +1,10 @@
+global:
+  resolve_timeout: 1m
+
+route:
+  receiver: 'default_receiver'
+
+receivers:
+  - name: 'default_receiver'
+    # Например, можно добавить email, Slack, webhook итп.
+    # В простом случае — ничего или noop

@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.52.0
+    volumes:
+      - D:/Work/prometheus-grafana-local/prometheus/data:/prometheus  
+      - "D:/Work/prometheus-grafana-local/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"  
+      - "D:/Work/prometheus-grafana-local/prometheus/rules.yml:/etc/prometheus/rules.yml"       
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana
+    volumes:
+      - D:/Work/prometheus-grafana-local/grafana/data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    restart: unless-stopped
+
+  alertmanager:
+    image: prom/alertmanager
+    container_name: alertmanager
+    volumes:
+      - D:/Work/prometheus-grafana-local/alertmanager/config:/etc/alertmanager
+    ports:
+      - "9093:9093"
+    command:
+    - '--config.file=/etc/alertmanager/alertmanager.yml'
+    restart: unless-stopped
+  
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    restart: unless-stopped
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+      
+volumes: {}
