@@ -1,0 +1,11 @@
+cycle_time_hours{task_id="T-1"} 8
+lead_time_hours{task_id="T-1"} 10
+cycle_time_hours{task_id="T-2"} 2
+lead_time_hours{task_id="T-2"} 2
+cycle_time_hours{task_id="T-3"} 10
+lead_time_hours{task_id="T-3"} 11
+cycle_time_hours{task_id="T-4"} 8
+lead_time_hours{task_id="T-4"} 12
+cycle_time_hours{task_id="T-5"} 6
+lead_time_hours{task_id="T-5"} 9
+

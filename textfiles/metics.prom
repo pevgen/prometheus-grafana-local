@@ -1,0 +1,12 @@
+# HELP custom_task_duration_seconds Duration of custom tasks in seconds
+# TYPE custom_task_duration_seconds gauge
+custom_task_duration_seconds{team="team1", person="ivanov", task="task11", start_date="2025-08-15"} 7200
+custom_task_duration_seconds{team="team1", person="ivanov", task="task12", start_date="2025-08-16"} 7200
+custom_task_duration_seconds{team="team1", person="ivanov", task="task13", start_date="2025-08-17"} 7200
+custom_task_duration_seconds{team="team1", person="petrov", task="task21", start_date="2025-08-15"} 7200
+custom_task_duration_seconds{team="team1", person="petrov", task="task22", start_date="2025-08-15"} 7200
+custom_task_duration_seconds{team="team1", person="petrov", task="task23", start_date="2025-08-15"} 7200
+custom_task_duration_seconds{team="team1", person="petrov", task="task24", start_date="2025-08-16"} 7200
+custom_task_duration_seconds{team="team1", person="petrov", task="task25", start_date="2025-08-16"} 7200
+custom_task_duration_seconds{team="team2", person="ivanov", task="task31", start_date="2025-08-17"} 7200
+custom_task_duration_seconds{team="team2", person="ivanov", task="task32", start_date="2025-08-18"} 7200
