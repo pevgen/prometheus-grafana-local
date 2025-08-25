@@ -29,7 +29,7 @@ services:
     ports:
       - "9093:9093"
     command:
-    - '--config.file=/etc/alertmanager/alertmanager.yml'
+      - '--config.file=/etc/alertmanager/alertmanager.yml'
     restart: unless-stopped
   
   node-exporter:
@@ -48,6 +48,21 @@ services:
       - '--path.rootfs=/rootfs'
       - '--path.sysfs=/host/sys'
       - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
-      - '--collector.textfile.directory=/textfiles'  # подключаем textfile collector для этой папки
+      - '--collector.textfile.directory=/textfiles'
 
-volumes: {}
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: grafanauser
+      POSTGRES_PASSWORD: grafanapassword
+      POSTGRES_DB: grafanadb
+    volumes:
+      - D:/Work/prometheus-grafana-local/postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: prometheus_grafana_network
